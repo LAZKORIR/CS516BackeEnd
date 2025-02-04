@@ -85,6 +85,7 @@ public class AuthHandler implements RequestHandler<APIGatewayProxyRequestEvent, 
             return false;
         }
 
+
         try {
             JsonObject jsonRequest = JsonParser.parseString(body).getAsJsonObject();
             return jsonRequest.has("image") && !jsonRequest.get("image").getAsString().isEmpty();
@@ -152,7 +153,7 @@ public class AuthHandler implements RequestHandler<APIGatewayProxyRequestEvent, 
 
             GetItemResponse response = dynamoDb.getItem(getItemRequest);
 
-            System.out.println("Testing deployment for presentation=======");
+            System.out.println("Testing deployment=======");
 
             if (response.hasItem()) {
                 String storedHash = response.item().get("password").s();
